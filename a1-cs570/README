@@ -1,0 +1,59 @@
+Prithipal Khalsa, cssc1182
+Leonardo Gomez, cssc
+Janae Waldon, cssc1183
+CS 570 Summer 2018
+Assignment #1 - Multithreading
+README
+
+File manifest (name of all files included in this project)
+Compile instructions
+Operating instructions (include any/all command line options/arguments, required inputs, etc)
+List/description of novel/significant design decisions
+List/description of any extra features/algorithms/functionality you included which were not required
+List/description of all known deficiencies or bugs
+Lessons Learned
+
+This is a simple program that demonstrates processes, threads and semaphores. 
+The semaphore helps to mitigate problems that arise with parallelism such as race conditions.
+The program simulates four 'card players' that will run, each in their own thread,
+simultaneously but asynchronously with each other. Each card player shall write the specified text message to
+one, common shared resource, to a file named STACK.txt. When writing to this file, the thread will prevent
+the data from getting corrupted by the other card player's threads.
+
+Thread 1: runs once every 1/8 second (125 ms), prints "Diamond" followed by run time and A | 2 | 3 |... |
+9 | 10 | J | Q | K depending on whether it's the first time or the 13th time it's run.
+Thread 2: runs once every 1/4 second (250 ms), prints "Club" followed by by run time and A | 2 | 3 |... | 9 |
+10 | J | Q | K depending on whether it's the first time or the 13th time it's run.
+Thread 3: runs once every 1/2 second (500 ms), prints "Heart" followed by by run time and A | 1 | 2 | 3 |... | 9 |
+10 | J | Q | K depending on whether it's the first time or the 13th time it's run.
+Thread 4: runs once every 3/4 second (750 ms), prints "Spade" followed by by run time and A | 1 | 2 | 3 |... | 9
+| 10 | J | Q | K depending on whether it's the first time or the 13th time it's run.
+
+
+File Manifest:
+a1.h -- header file containing function declarations 
+a1.c -- functions definitions (meat of our program)
+main.c --  main file that runs a1.c
+makefile -- makefile
+stack.txt -- output file
+
+
+Compile instructions:
+	type 'make' then run "./player" 
+	The output is written in stack.txt
+
+Operating instructions:
+makefile:
+	all - will compile the necessary files
+	run - will run the object file 'player'
+	clean - remove the 'player' and 'stack.txt' files 
+
+Deficiancies:
+make: *** [run] Error 31
+	This error occurs when we run the command 'make run'
+	we were unable to track down its origin becuase it does not happen when we type the command manually.
+
+Lessons Learned:
+Learned a lot about semaphores and the intricacies of threading. 
+
+
